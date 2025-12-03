@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Paiement extends Model
@@ -17,5 +17,9 @@ class Paiement extends Model
     public function etudiant()
     {
         return $this->belongsTo(Etudiant::class);
+    }
+    public function inscription()
+    {
+        return $this->belongsTo(Inscription::class);
     }
 }

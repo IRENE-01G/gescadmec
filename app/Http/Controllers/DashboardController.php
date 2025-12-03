@@ -23,8 +23,11 @@ class DashboardController extends Controller
         $besoins = Besoin::count();
         $paiements = Paiement::count();
 
-        // Exemple d’impayés : si tu veux calculer une somme
-        $impayes = Paiement::where('statut', 'impayé')->sum('montant') ?? 0;
+        // Solde : somme des paiements complétés
+        $solde = Paiement::where('statut', 'completed')->sum('montant') ?? 0;
+
+        // Impayés : somme des paiements en attente
+        $impayes = Paiement::where('statut', 'pending')->sum('montant') ?? 0;
 
         return view('dashboard', compact(
             'etudiants',
@@ -33,6 +36,7 @@ class DashboardController extends Controller
             'besoins',
             'paiements',
             'impayes',
+            'solde',
         ));
     }
 }

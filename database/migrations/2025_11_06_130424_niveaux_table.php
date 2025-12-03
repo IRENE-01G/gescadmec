@@ -11,8 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {  
-
-        Schema::create('niveaux', function (Blueprint $table) {
+        Schema::create('niveau', function (Blueprint $table) {
             $table->id();
             $table->string('code')->unique();
             $table->string('nom');
@@ -20,7 +19,6 @@ return new class extends Migration
             $table->decimal('frais_inscription', 10, 2)->nullable();
             $table->timestamps();
         });
-
     }
 
     /**
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('niveaux');
+        Schema::dropIfExists('niveau');
     }
 };

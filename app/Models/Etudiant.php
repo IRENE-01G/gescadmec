@@ -9,6 +9,8 @@ class Etudiant extends Model
 {
     use HasFactory;
 
+    protected $table = 'etudiant';
+
     protected $fillable = [
        'nom',
        'prenom',
@@ -23,7 +25,7 @@ class Etudiant extends Model
 
     public function niveau()
     {
-        return $this->belongsTo(niveau::class);
+        return $this->belongsTo(Niveau::class, 'niveau_id');
     }
     
 }

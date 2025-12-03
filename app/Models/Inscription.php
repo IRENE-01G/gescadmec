@@ -3,19 +3,34 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class inscription extends Model
+
+class Inscription extends Model
 {
-    protected $table = 'Inscription';
+    protected $table = 'inscription';
+
     protected $fillable = [
         'etudiant_id',
         'niveau_id',
+        'annee_academique',
         'date_inscription',
-        'frais',
         'statut',
+        'frais',
     ];
+
     public function etudiant()
     {
-        return $this->hasMany(Etudiant::class);
-    }                   
+        return $this->belongsTo(Etudiant::class, 'etudiant_id');
+    }
+
+    public function niveau()
+    {
+        return $this->belongsTo(Niveau::class, 'niveau_id');
+    }
+
+    public function paiements()
+    {
+        return $this->hasMany(Paiement::class, 'inscription_id');
+    }
 }

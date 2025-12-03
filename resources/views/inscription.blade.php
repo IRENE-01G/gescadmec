@@ -58,11 +58,21 @@
             cursor: pointer;
 
         }
+        a{
+        
+           background-color: #7e1e99ff;
+           color: white;
+            padding: 8px 12px;
+            text-decoration: none;
+            margin-left: 20px;
+            border-radius: 6px;
+            
+        }
 
     </style>
 
- <body>
-    
+ <body><br><br><br>
+     <a href="{{ route('dashboard') }}" class="back">⬅ Retour au Dashboard</a>
     <form action="{{ route('inscription.submit') }}" method="post">
         @csrf
         <h1>Page d'inscription</h1>

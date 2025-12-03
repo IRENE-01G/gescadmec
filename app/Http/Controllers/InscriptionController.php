@@ -12,8 +12,8 @@ class InscriptionController extends Controller
 {
     public function showInscriptionForm()
     {
-        $niveaux = Niveau::all();
-
+        $inscriptions = Inscription::all();
+        $niveaux=niveau::all();
         return view('inscription', compact('niveaux'));
     }
 
@@ -70,4 +70,5 @@ class InscriptionController extends Controller
         return redirect()->back()->with('success', 'Inscription réussie !');
        
     }
+
 }
